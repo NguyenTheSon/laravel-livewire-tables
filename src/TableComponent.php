@@ -69,8 +69,15 @@ abstract class TableComponent extends Component
         }
 
         $this->setOptions($this->options);
-
+        $this->perPage = session('perPage', 50);
+        
         parent::__construct($id);
+    }
+
+    public function updatedPerPage($value): void
+    {   
+        session(['perPage' => $value]);
+        parent::updatedPerPage($value);
     }
 
     /**
